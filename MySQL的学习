@@ -1,1 +1,3 @@
-
+slect语句
+查询国名，大洲，
+SELECT name, continent, population FROM world
