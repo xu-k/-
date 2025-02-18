@@ -55,14 +55,39 @@ SELECT name, population FROM world
 SELECT name
 FROM world
 WHERE name LIKE '%United%'
+
 'United%'会匹配以United开头的国家，'%United%'会匹配任何位置中出现United的情况
 
+··查询国名、人口、面积；world；面积大于三百万或者人口大于二点五亿人
+SELECT name,population,area FROM world
+WHERE population > 250000000
+OR area > 3000000
+
+··查询国名、人口、面积；world；面积大于三百万或者人口大于二点五亿人、排除印度美国中国
+SELECT name,population,area FROM world
+WHERE population > 250000000
+XOR area > 3000000
+
+XOR 逻辑：当只有一个条件成立（而不是同时成立）时，才会返回该行数据。
+另一种实现方法：
+SELECT name, population, area 
+FROM world
+WHERE (population > 250000000 OR area > 3000000)
+AND NOT (population > 250000000 AND area > 3000000);
+
+··查询人口、百万计人口、十亿计gdp；world；南美地区国家
+SELECT name, 
+       ROUND(population / 1000000, 2) AS population_in_millions,  
+       ROUND(GDP / 1000000000, 2) AS GDP_in_billions  
+FROM world
+WHERE continent = 'South America';
+
+为了提高可读性，可以给计算列添加别名（AS 别名），这样查询结果的列名更清晰
+ROUND(population / 1000000, 2) AS population_in_millions：将人口以百万（million）计，并保留 2 位小数。
+ROUND(GDP / 1000000000, 2) AS GDP_in_billions：将 GDP 以十亿（billion）计，并保留 2 位小数。
+WHERE continent = 'South America'：筛选出南美洲的国家。
+
 ··
-
-
-
-
-
 
 
 
