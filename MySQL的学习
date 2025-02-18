@@ -87,6 +87,15 @@ ROUND(population / 1000000, 2) AS population_in_millions：将人口以百万（
 ROUND(GDP / 1000000000, 2) AS GDP_in_billions：将 GDP 以十亿（billion）计，并保留 2 位小数。
 WHERE continent = 'South America'：筛选出南美洲的国家。
 
+··查询名称、人均國內生產總值；world；国家gdp大于一亿、人均國內生產總值四舍五入到千位
+SELECT name, 
+       ROUND(GDP / population, -3) AS GDP_per_capita
+FROM world
+WHERE GDP >= 1000000000000;
+
+GDP >= 1000000000000：筛选出 GDP 至少 1 万亿的国家。
+GDP / population：计算人均 GDP（GDP per capita）
+
 ··
 
 
