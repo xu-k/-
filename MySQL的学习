@@ -18,5 +18,73 @@ SELECT name FROM bbc
   WHERE name IN ('Sri Lanka', 'Ceylon',
                  'Persia',    'Iran')
 
+··查询哪些国家的国名由‘D’字母开头
+SELECT name FROM bbc
+  WHERE name LIKE 'D%'
+
+··哪些国家不算太大也不算太小，BETWEEN用于检索范围
+SELECT name, area FROM bbc
+  WHERE area BETWEEN 207600 AND 244820
+
+··查询国名、所属地区、人口；从world表中
+SELECT name, continent, population FROM world
+
+··查询国名、人口数量；从world表中；人口数量大于两亿
+SELECT name,population FROM world
+WHERE population>200000000
+
+··查询国名；从world表中；人口数量大于两亿
+SELECT name FROM world
+WHERE population>200000000
+
+··查询国名、国内人均生产总值；从world表中；人口大于两亿
+SELECT name,gdp/population
+FROM world
+WHERE population>200000000
+
+··查询国名、人口（以百万为单位）；从world表中；在南美洲大陆中的国家
+SELECT name,population/1000000
+FROM world
+WHERE continent IN ('South America')
+
+··查询国名、人口；world；国名为法国、德国、意大利
+SELECT name, population FROM world
+  WHERE name IN ('France', 'Germany', 'Italy');
+
+··查询国名；world；国名中包含United
+SELECT name
+FROM world
+WHERE name LIKE '%United%'
+'United%'会匹配以United开头的国家，'%United%'会匹配任何位置中出现United的情况
+
 ··
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
