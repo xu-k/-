@@ -1,3 +1,22 @@
 slect语句
-查询国名，大洲，
+
+··查询国名，大洲，人口
 SELECT name, continent, population FROM world
+
+··查询面积大于5000000的国家的国名、人口密度
+SELECT name, population/area FROM bbc
+  WHERE area > 5000000
+
+··查询国名、地区，国土面积小于2000、gdo大于5000000000的国家
+SELECT name , region
+  FROM bbc
+  WHERE area < 2000
+    AND gdp > 5000000000
+
+··查询这四个名字，哪些是存在于列表中的国名
+SELECT name FROM bbc
+  WHERE name IN ('Sri Lanka', 'Ceylon',
+                 'Persia',    'Iran')
+
+··
+
